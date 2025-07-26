@@ -12,7 +12,7 @@ import javax.persistence.EntityTransaction;
 
 @Interceptor
 @Transacional
-@Priority(Interceptor.Priority.APPLICATION)
+@Priority(2000)
 public class TransacionalInterceptor implements Serializable{
 
 	private static final long serialVersionUID = 1L;

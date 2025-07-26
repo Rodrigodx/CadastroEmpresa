@@ -1,1 +1,11 @@
-projetoJSF\projetoJSF\App.class
+models\RamoAtividade.class
+repository\Empresas.class
+service\CadastroEmpresaService.class
+util\TransacionalInterceptor.class
+enums\TipoEmpresaEnum.class
+repository\SchemaGeneration.class
+models\Empresa.class
+util\EntityManagerProducer.class
+repository\CamadaPersistencia.class
+util\Transacional.class
+repository\RamoAtividades.class
