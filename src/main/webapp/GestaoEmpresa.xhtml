@@ -19,21 +19,42 @@
 		<h:form>
 			 <h:panelGrid columns="2" >
 			 	<h:outputLabel value="Razão social: " for="razaoSocial"/>
-			 	<h:inputText id="razaoSocial" />
+			 	<h:inputText id="razaoSocial" value="#{gestaoEmpresaBean.empresa.razaoSocial}" />
 			 	
 			 	<h:outputLabel value="Nome Fantasia: " for="nomeFantasia"/>
-			 	<h:inputText id="nomeFantasia" />
+			 	<h:inputText id="nomeFantasia" value="#{gestaoEmpresaBean.empresa.nomeFantasia}"/>
 			 	
 			 	<h:outputLabel value="Tipo empresa: " for="tipo"/>
-			 	<h:selectOneMenu id="tipo">
+			 	<h:selectOneMenu id="tipo" value="#{gestaoEmpresaBean.empresa.tipo}">
 			 		<f:selectItem itemLabel="Selecione..." />
-			 		<f:selectItem itemLabel="MEI" itemValue="MEI" />
-			 		<f:selectItem itemLabel="LTDA" itemValue="LTDA" />
+			 		<f:selectItems value="#{gestaoEmpresaBean.tiposEmpresa}"
+			 			var="tipoEmpresaEnum" itemLabel="#{tipoEmpresaEnum.desc}" itemValue="#{tipoEmpresaEnum}" />
 			 	</h:selectOneMenu>
 			 	
 			 	<h:outputLabel/>
-			 	<h:commandButton value="Salvar" />
+			 	<h:commandButton value="Salvar" actionListener="#{gestaoEmpresaBean.salvar}" />
 			 </h:panelGrid>
+			 
+			 <h:dataTable value="#{[0, 0, 0]}">
+			 	<h:column>
+			 	
+			 		<f:facet name="header">
+			 			<h:outputText value="Razão Social"/>
+			 		</f:facet>
+			 		<h:outputText value="AlgaWorks Softwares, Treinamentos LTDA"/>
+
+			 		<f:facet name="header">
+			 			<h:outputText value="Nome fantasia"/>
+			 		</f:facet>	
+			 		<h:outputText value="AlgaWorks"/>
+
+			 		<f:facet name="header">
+			 			<h:outputText value="Tipo Empresa"/>
+			 		</f:facet>
+			 		<h:outputText value="LTDA"/>
+			 	
+			 	</h:column>
+			 </h:dataTable>
 		</h:form>
 	</div>
 
