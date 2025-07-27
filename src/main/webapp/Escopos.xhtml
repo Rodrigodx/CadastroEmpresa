@@ -15,14 +15,19 @@
 		<h:graphicImage library="algaworks" name="logo.png" />
 	</header>
 
+
+	<h2>Ajuda</h2>
+
 	<div id="conteudo">
+		
 		<h:form>
-			 <h:panelGrid columns="2" >
-			 	<h:outputLabel value="Número: "/>
-			 	<h:outputText value="#{gestaoEmpresaBean.numero}" />
-			 	
-			 	<h:commandButton value="Salvar" />
-			 </h:panelGrid>
+			<p>Esta é a ajuda da página de empresas.</p>
+			<p>
+				<h:commandLink value="Voltar" action="GestaoEmpresa"/>
+			</p>	 
+			<p>
+				<h:commandLink value="Voltar" action="GestaoEmpresa?faces-redirect=true"/>
+			</p>	 
 		</h:form>
 	</div>
 

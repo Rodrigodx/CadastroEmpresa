@@ -33,6 +33,12 @@
 			 	
 			 	<h:outputLabel/>
 			 	<h:commandButton value="Salvar" actionListener="#{gestaoEmpresaBean.salvar}" />
+			 	
+			 	<h:outputLabel/>
+			 	<h:commandLink value="Ajuda?" action="#{gestaoEmpresaBean.ajudaImplicita}" />
+			 	
+			 	<h:outputLabel/>
+			 	<h:commandLink value="Ajuda?" action="#{gestaoEmpresaBean.ajudaExplicita}" />
 			 </h:panelGrid>
 			 
 			 <h:dataTable value="#{[0, 0, 0]}">

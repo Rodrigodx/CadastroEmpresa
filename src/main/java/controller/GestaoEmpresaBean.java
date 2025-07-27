@@ -22,6 +22,14 @@ public class GestaoEmpresaBean implements Serializable {
 				+ " - Tipo: " + empresa.getTipo());
 	}
 	
+	public String ajudaImplicita() {
+		return "Escopos";
+	}
+
+	public String ajudaExplicita() {
+		return "Escopos?faces-redirect=true";
+	}
+	
 	public Empresa getEmpresa() {
 		return empresa;
 	}
