@@ -9,7 +9,6 @@ import javax.persistence.TypedQuery;
 
 import models.Empresa;
 
-
 public class Empresas implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,14 +28,17 @@ public class Empresas implements Serializable {
 		return manager.find(Empresa.class, i);
 	}
 
+	public List<Empresa> findAll() {
+		return manager.createQuery("from Empresa", Empresa.class).getResultList();
+	}
+
 	public List<Empresa> pesquisar(String nome) {
 		String jpql = "from Empresa where nomeFantasia like :nomeFantasia";
-		
-		TypedQuery<Empresa> query = manager
-				.createQuery(jpql, Empresa.class);
-		
+
+		TypedQuery<Empresa> query = manager.createQuery(jpql, Empresa.class);
+
 		query.setParameter("nomeFantasia", nome + "%");
-		
+
 		return query.getResultList();
 	}
 
@@ -49,4 +51,3 @@ public class Empresas implements Serializable {
 		manager.remove(empresa);
 	}
 }
-
