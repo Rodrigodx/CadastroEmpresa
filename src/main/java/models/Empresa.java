@@ -50,18 +50,6 @@ public class Empresa implements Serializable{
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 30)
 	private TipoEmpresaEnum tipo;
-	
-	@Column(precision = 10, scale = 2)
-	private BigDecimal faturamento; 
-	
-	
-	public BigDecimal getFaturamento() {
-		return faturamento;
-	}
-
-	public void setFaturamento(BigDecimal faturamento) {
-		this.faturamento = faturamento;
-	}
 
 	public TipoEmpresaEnum getTipo() {
 		return tipo;

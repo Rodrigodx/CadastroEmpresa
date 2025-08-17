@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
 
+import enums.TipoEmpresaEnum;
 import models.Empresa;
 import repository.Empresas;
 import util.FacesMessages;
@@ -34,7 +35,6 @@ public class GestaoEmpresaBean implements Serializable {
 		
 		if(listaEmpresas.isEmpty()) {
 			messages.info("Sua consulta não retornou registros.");
-			
 		}
 	}
 	
@@ -54,6 +54,8 @@ public class GestaoEmpresaBean implements Serializable {
 		this.termoPesquisa = termoPesquisa;
 	}
 	
-	
+	public TipoEmpresaEnum[] getTipoEmpresa() {
+		return TipoEmpresaEnum.values();
+	}
 
 }
