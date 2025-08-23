@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.convert.Converter;
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.hibernate.query.criteria.internal.predicate.IsEmptyPredicate;
+import org.primefaces.context.RequestContext;
 
 import enums.TipoEmpresaEnum;
 import models.Empresa;
@@ -53,9 +55,13 @@ public class GestaoEmpresaBean implements Serializable {
 		
 		if(houvePesquisa()) {
 			pesquisar();
+		}else {
+			todasEmpresas();
 		}
 		
-		messages.info("Empresa cadastrada com sucesso!");
+		messages.info("Empresa salva com sucesso!");
+		
+		RequestContext.getCurrentInstance().update(Arrays.asList("frm:empresaDataTable", "frm:messages"));
 		
 	}
 	
