@@ -15,6 +15,7 @@ import models.Empresa;
 import models.RamoAtividade;
 import repository.Empresas;
 import repository.RamoAtividades;
+import service.CadastroEmpresaService;
 import util.FacesMessages;
 
 @Named
@@ -32,11 +33,31 @@ public class GestaoEmpresaBean implements Serializable {
 	@Inject
 	private RamoAtividades ramoAtividades;
 	
+	@Inject
+	private CadastroEmpresaService cadastroEmpresaService;
+	
 	private List<Empresa> listaEmpresas;
 
 	private String termoPesquisa;
 
 	private Converter ramoAtividadeConverter;
+	
+	private Empresa empresa;
+	
+	public void prepararNovaEmpresa() {
+		empresa = new Empresa();
+	}
+	
+	public void salvar() {
+		cadastroEmpresaService.salvar(empresa);
+		
+		if(houvePesquisa()) {
+			pesquisar();
+		}
+		
+		messages.info("Empresa cadastrada com sucesso!");
+		
+	}
 	
 	public void pesquisar() {
 		listaEmpresas = empresas.pesquisar(termoPesquisa);
@@ -59,6 +80,10 @@ public class GestaoEmpresaBean implements Serializable {
 		return listaRamoAtividades;
 	}
 	
+	private boolean houvePesquisa() {
+		return termoPesquisa != null && !"".equals(termoPesquisa);
+	}
+	
 	public List<Empresa> getListaEmpresas() {
 		return listaEmpresas;
 	}
@@ -77,5 +102,9 @@ public class GestaoEmpresaBean implements Serializable {
 
 	public Converter getRamoAtividadeConverter() {	
 		return ramoAtividadeConverter;
+	}
+	
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 }
