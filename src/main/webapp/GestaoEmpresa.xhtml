@@ -32,22 +32,28 @@
 					</span>
 	
 					<p:commandButton value="Nova" icon="fa fa-plus"
-					 actionListener="#{gestaoEmpresaBean.prepararNovaEmpresa}"
-					 oncomplete="PF('empresaDialogWidgetVar').show()"
-					 update="empresaDialog" process="@this" >
-					 	<p:resetInput target="empresaDialog" />
+						 actionListener="#{gestaoEmpresaBean.prepararNovaEmpresa}"
+						 oncomplete="PF('empresaDialogWidgetVar').show()"
+						 update="empresaDialog" process="@this" >
+						 <p:resetInput target="empresaDialog" />
 					 </p:commandButton>
 	
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 	
-					<p:commandButton title="Editar" icon="fa fa-edit" disabled="#{not gestaoEmpresaBean.empresaSelecionada}" />
+					<p:commandButton title="Editar" icon="fa fa-edit" 
+						disabled="#{not gestaoEmpresaBean.empresaSelecionada}"
+						actionListener="#{gestaoEmpresaBean.prepararEdicao}"
+						oncomplete="PF('empresaDialogWidgetVar').show()"
+						update="empresaDialog" process="@this" >
+						<p:resetInput target="empresaDialog" />
+					</p:commandButton>
 					
 					<p:commandButton title="Excluir" icon="fa fa-trash" disabled="#{not gestaoEmpresaBean.empresaSelecionada}" />
 	
-					<span class="ui-separator"> <span
-						class="ui-icon ui-icon-grip-dotted-vertical" />
+					<span class="ui-separator"> 
+						<span class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 					
 					<p:commandButton title="Exportar para o excel" icon="fa fa-file" />
