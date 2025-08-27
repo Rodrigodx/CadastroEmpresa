@@ -19,7 +19,7 @@
 
 			<p:messages id="messages"/>
 
-			<p:toolbar>
+			<p:toolbar id="toolbar">
 				
 				<f:facet name="left">
 								
@@ -42,9 +42,9 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 	
-					<p:commandButton title="Editar" icon="fa fa-edit" />
+					<p:commandButton title="Editar" icon="fa fa-edit" disabled="#{not gestaoEmpresaBean.empresaSelecionada}" />
 					
-					<p:commandButton title="Excluir" icon="fa fa-trash" />
+					<p:commandButton title="Excluir" icon="fa fa-trash" disabled="#{not gestaoEmpresaBean.empresaSelecionada}" />
 	
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -61,7 +61,11 @@
 
 			<p:dataTable id="empresaDataTable" value="#{gestaoEmpresaBean.listaEmpresas}" var="empresa"
 				emptyMessage="Nenhuma informaçaão a ser exibida" paginator="true"
-				rows="10" paginatorPosition="bottom">
+				rows="10" paginatorPosition="bottom" selectionMode="single" selection="#{gestaoEmpresaBean.empresa}" rowKey="#{empresa.id}">
+
+				<p:ajax event="rowSelect" update="frm:toolbar"/>
+
+				<p:ajax event="rowUnselect" update="frm:toolbar"/>
 
 				<p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
 					<h:outputText value="#{empresa.razaoSocial}" />
