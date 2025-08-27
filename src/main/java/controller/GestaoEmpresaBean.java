@@ -57,16 +57,22 @@ public class GestaoEmpresaBean implements Serializable {
 	public void salvar() {
 		cadastroEmpresaService.salvar(empresa);
 		
-		if(houvePesquisa()) {
-			pesquisar();
-		}else {
-			todasEmpresas();
-		}
+		atualizarRegistros();
 		
 		messages.info("Empresa salva com sucesso!");
 		
 		RequestContext.getCurrentInstance().update(Arrays.asList("frm:empresaDataTable", "frm:messages"));
 		
+	}
+	
+	public void excluir() {
+		cadastroEmpresaService.excluir(empresa);
+		
+		empresa = null;
+		
+		atualizarRegistros();
+		
+		messages.info("Empresa excluída com sucesso!");
 	}
 	
 	public void pesquisar() {
@@ -88,6 +94,14 @@ public class GestaoEmpresaBean implements Serializable {
 		ramoAtividadeConverter = new RamoAtividadeConverter(listaRamoAtividades);
 		
 		return listaRamoAtividades;
+	}
+	
+	private void atualizarRegistros() {
+		if(houvePesquisa()) {
+			pesquisar();
+		}else {
+			todasEmpresas();
+		}
 	}
 	
 	private boolean houvePesquisa() {
